@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Search</title>
+    <link rel="stylesheet" href="ApiMovies.css">
+</head>
+<body>
+    <div>
+        <nav>
+            <ul class="main-nav">
+              <li><a href="SearchMovies.html">Search</a></li>
+              <li><a href="WatchlistMovies.html">Watchlist</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="container">
+        <div style="width: 30%;">
+            <h1 id="pageTitle">Search Movies</h1>
+            <div id="searchSection">
+                <input type="text" id="queryInput" placeholder="Enter movie name...">
+                <button id="searchButton">Search</button>
+            </div>
+            <div id="results"></div>
+        </div>
+        <div style="width: 70%; margin: 1rem;">
+            <h2 id="actorMoviesTitle" style="display: none;"></h2>
+            <div id="movieDetails"></div>
+        </div>
+    </div>
+    <script src="ApiMovies.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const movieId = urlParams.get('movieId');
+            if (movieId) {
+                fetchMovieDetails(movieId); // Rechercher le film par ID
+            }
+        });
+    </script>
+</body>
+</html>
